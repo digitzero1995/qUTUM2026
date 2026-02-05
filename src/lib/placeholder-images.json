@@ -1,0 +1,16 @@
+{
+  "placeholderImages": [
+    {
+      "id": "user-avatar",
+      "description": "User avatar in header",
+      "imageUrl": "https://images.unsplash.com/photo-1521146764736-56c929d59c83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBmYWNlfGVufDB8fHx8MTc2OTg5MTM0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person face"
+    },
+    {
+      "id": "auth-bg",
+      "description": "Abstract background for authentication pages",
+      "imageUrl": "https://images.unsplash.com/photo-1536697223303-913808560395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMHRyYWRpbmd8ZW58MHx8fHwxNzA0ODMwMDc0fDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "abstract trading"
+    }
+  ]
+}

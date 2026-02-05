@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "QuantumAlphaIn",
+  "version": "0.1.0",
+  "description": "Scrape Alice Blue trading page and push live trades to Quantum dashboard.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": [
+    "https://ant.aliceblueonline.com/*",
+    "http://localhost:9002/*",
+    "https://localhost:9002/*",
+    "http://*:9002/*",
+    "https://*:9002/*",
+    "http://127.0.0.1:9002/*",
+    "https://127.0.0.1:9002/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "QuantumAlphaIn"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://ant.aliceblueonline.com/orders*"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://ant.aliceblueonline.com/home*"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": []
+}

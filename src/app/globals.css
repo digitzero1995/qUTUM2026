@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 200 17% 96%; /* #ECEFF1 */
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 231 48% 48%; /* #3F51B5 */
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 35 100% 62%; /* #FFAB40 */
+    --accent-foreground: 25.7 92.9% 10.6%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 231 48% 48%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --sidebar-background: 220 10% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 231 48% 48%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 10% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 10% 20%;
+    --sidebar-ring: 231 48% 48%;
+  }
+ 
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 231 48% 48%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 35 100% 62%;
+    --accent-foreground: 25.7 92.9% 10.6%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 231 48% 48%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --sidebar-background: 224 71.4% 4.1%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 231 48% 48%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 215 27.9% 16.9%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 215 27.9% 16.9%;
+    --sidebar-ring: 231 48% 48%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Ensure images scale on smaller screens */
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+@layer utilities {
+  /* Page container padding for responsive alignment */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-full;
+  }
+
+  /* Small helper to add spacing at bottom for fixed mobile nav */
+  .with-footer-padding {
+    @apply pb-24 md:pb-6;
+  }
+}
+
+/* Ensure pages have space for the fixed mobile nav + safe-area inset */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom));
+    font-size: 14px; /* slightly smaller text on small screens */
+  }
+
+  /* Make buttons smaller and fit better on mobile */
+  button {
+    font-size: 13px;
+    padding: 0.45rem 0.75rem;
+    height: 2.25rem;
+  }
+
+  /* Decrease header and footer spacings */
+  header {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* Prevent horizontal overflow and handle long words/strings */
+html, body, #__next {
+  overflow-x: hidden;
+}
+
+/* Make sure long strings wrap instead of overflowing */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+img, svg, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent headers/main/footer/nav from causing horizontal overflow */
+header, nav, footer, main, .container {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
