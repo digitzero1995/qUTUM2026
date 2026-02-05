@@ -3,6 +3,7 @@
 import { useAuth } from '@/context/auth-context';
 import { MasterDashboard } from './components/master-dashboard';
 import { FollowerDashboard } from './components/follower-dashboard';
+import { OAuthTradesDashboard } from './components/oauth-trades-dashboard';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function DashboardPage() {
@@ -23,6 +24,11 @@ export default function DashboardPage() {
 
   if (user.role === 'master') {
     return <MasterDashboard />;
+  }
+
+  // OAuth trader users see their Alice Blue trades
+  if (user.role === 'trader' && user.authMethod === 'oauth') {
+    return <OAuthTradesDashboard />;
   }
 
   return <FollowerDashboard />;

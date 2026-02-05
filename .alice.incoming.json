@@ -1289,6 +1289,15 @@
       "side": "Buy",
       "status": "Filled",
       "type": "Market"
+    },
+    {
+      "id": "QA-TEST-1770298370782",
+      "timestamp": "2026-02-05T13:32:50.782Z",
+      "symbol": "TEST",
+      "quantity": 1,
+      "price": 1,
+      "side": "Buy",
+      "status": "Filled"
     }
   ],
   "MASTER-001": [],

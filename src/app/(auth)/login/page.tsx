@@ -78,6 +78,27 @@ export default function LoginPage() {
                       {isLoading ? 'Signing In...' : 'Sign In'}
                       </Button>
                   </form>
+
+                  <div className="relative my-6">
+                    <div className="absolute inset-0 flex items-center">
+                      <span className="w-full border-t"></span>
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                      <span className="bg-white px-2 text-gray-500">Or continue with</span>
+                    </div>
+                  </div>
+
+                  <Button 
+                    onClick={() => window.location.href = '/api/alice/oauth/vendor/start'}
+                    variant="outline" 
+                    className="w-full"
+                    type="button"
+                  >
+                    <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"></path>
+                    </svg>
+                    Login with Alice Blue
+                  </Button>
               </CardContent>
           </Card>
         </div>

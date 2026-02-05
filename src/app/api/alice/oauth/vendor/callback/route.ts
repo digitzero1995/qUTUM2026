@@ -44,8 +44,40 @@ export async function GET(req: NextRequest) {
       console.error('Failed to save account token', e);
     }
 
-    // return useful info to caller
-    return NextResponse.json({ ok: true, userId, received: !!userSession, info: { expiresIn: payload.expiresIn ?? null } });
+    // Create a user object and store in localStorage via redirect
+    // The user will be created as a 'trader' with OAuth authentication
+    const userObj = {
+      id: String(userId),
+      role: 'trader',
+      name: String(userId),
+      authMethod: 'oauth'
+    };
+
+    // Trigger a poll request to fetch trades immediately upon login
+    try {
+      const pollResponse = await fetch(
+        new URL('/api/alice/poll', new URL(req.url).origin).toString(),
+        { method: 'POST' }
+      );
+      console.log('Triggered trade poll on login:', { status: pollResponse.status });
+    } catch (e) {
+      console.warn('Failed to trigger immediate trade poll:', e);
+      // Continue anyway - the user will still log in
+    }
+
+    // Create response that redirects to dashboard
+    const dashboardUrl = new URL('/dashboard', new URL(req.url).origin);
+    const res = NextResponse.redirect(dashboardUrl);
+    
+    // Store user in a cookie temporarily so the dashboard can set localStorage
+    // (since this is an API route, we can't directly set localStorage)
+    res.cookies.set('alice_user', JSON.stringify(userObj), {
+      httpOnly: false,
+      maxAge: 86400, // 24 hours
+      sameSite: 'lax'
+    });
+
+    return res;
   } catch (err: any) {
     console.error('Vendor callback error:', err);
     return NextResponse.json({ ok: false, message: err?.message ?? 'Unknown error' }, { status: 500 });

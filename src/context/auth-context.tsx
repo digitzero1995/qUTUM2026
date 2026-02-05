@@ -9,8 +9,9 @@ import type { FollowerAccount } from '@/lib/data';
 // Define the shape of the user object
 interface User {
   id: string;
-  role: 'master' | 'follower';
+  role: 'master' | 'follower' | 'trader';
   name: string;
+  authMethod?: 'password' | 'oauth';
 }
 
 // Define the shape of the context
@@ -45,6 +46,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (storedUser) {
         const parsedUser = JSON.parse(storedUser);
         setUser(parsedUser);
+      } else {
+        // Check for OAuth callback cookie
+        const cookies = document.cookie.split(';').reduce((acc: any, cookie) => {
+          const [key, value] = cookie.trim().split('=');
+          acc[key] = decodeURIComponent(value);
+          return acc;
+        }, {});
+
+        if (cookies.alice_user) {
+          try {
+            const oauthUser = JSON.parse(cookies.alice_user);
+            localStorage.setItem('user', JSON.stringify(oauthUser));
+            setUser(oauthUser);
+            // Clear the temporary cookie
+            document.cookie = 'alice_user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          } catch (e) {
+            console.error("Failed to parse OAuth user from cookie", e);
+          }
+        }
       }
     } catch (e) {
       console.error("Failed to parse user from localStorage", e);
