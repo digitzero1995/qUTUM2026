@@ -3,7 +3,7 @@
 
 (function () {
   const DEFAULT_ENDPOINT = 'https://quantumalphaindia.com/api/alice/push';
-  const DEFAULT_SECRET = 'testsecret';
+  const DEFAULT_SECRET = '7rG082hYyvKYDvy4YLJeVmyru4WB6W5GfFudhquSG62ZnW6NN7LE43ZesamzYL8bVidSjRhlp39nQH6hvfEMEuT1Ap87uhtKq2in';
 
   async function getConfig() {
     return new Promise((resolve) => {

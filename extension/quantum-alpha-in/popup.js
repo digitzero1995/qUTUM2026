@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   chrome.storage.local.get(['qa_server','qa_accountId','qa_secret'], (res) => {
     server.value = res.qa_server || 'https://quantumalphaindia.com/api/alice/push';
     accountId.value = res.qa_accountId || '';
-    secret.value = res.qa_secret || 'testsecret';
+    secret.value = res.qa_secret || '7rG082hYyvKYDvy4YLJeVmyru4WB6W5GfFudhquSG62ZnW6NN7LE43ZesamzYL8bVidSjRhlp39nQH6hvfEMEuT1Ap87uhtKq2in';
   });
 
   save.addEventListener('click', () => {
