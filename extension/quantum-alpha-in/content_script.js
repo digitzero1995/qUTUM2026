@@ -3,6 +3,7 @@
 
 (function () {
   const DEFAULT_ENDPOINT = 'https://quantumalphaindia.com/api/alice/push';
+  const DEFAULT_SECRET = 'testsecret';
 
   async function getConfig() {
     return new Promise((resolve) => {
@@ -11,11 +12,11 @@
           resolve({
             server: res.qa_server || DEFAULT_ENDPOINT,
             accountId: res.qa_accountId || 'Master',
-            secret: res.qa_secret || ''
+            secret: res.qa_secret || DEFAULT_SECRET
           });
         });
       } catch (e) {
-        resolve({ server: DEFAULT_ENDPOINT, accountId: 'Master', secret: '' });
+        resolve({ server: DEFAULT_ENDPOINT, accountId: 'Master', secret: DEFAULT_SECRET });
       }
     });
   }
