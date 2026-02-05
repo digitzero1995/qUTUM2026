@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const test = document.getElementById('test');
 
   chrome.storage.local.get(['qa_server','qa_accountId','qa_secret'], (res) => {
-    server.value = res.qa_server || 'http://localhost:9002/api/alice/push';
+    server.value = res.qa_server || 'https://quantumalphaindia.com/api/alice/push';
     accountId.value = res.qa_accountId || '';
     secret.value = res.qa_secret || '';
   });

@@ -2,7 +2,7 @@
 // - Observes the trading table on Alice Blue trading page and pushes trades to configured server
 
 (function () {
-  const DEFAULT_ENDPOINT = 'http://localhost:9002/api/alice/push';
+  const DEFAULT_ENDPOINT = 'https://quantumalphaindia.com/api/alice/push';
 
   async function getConfig() {
     return new Promise((resolve) => {
