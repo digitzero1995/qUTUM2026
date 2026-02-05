@@ -8,6 +8,7 @@ import {
   Settings,
   FileText,
   BookOpen,
+  Database,
 } from 'lucide-react';
 import {
   SidebarMenuItem,
@@ -45,6 +46,14 @@ export function NavItems() {
               <Link href="/configuration">
                 <Settings />
                 <span>Configuration</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild tooltip="Admin" isActive={pathname.startsWith('/admin')}>
+              <Link href="/admin">
+                <Database />
+                <span>Admin</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
